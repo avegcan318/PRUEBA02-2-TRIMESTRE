@@ -25,7 +25,6 @@ public class GestorEmpleado {
 				case 4 -> consola.imprimirLinea("Se ha salido del programa.");
                 default -> consola.imprimirLinea("Opción no válida.");
             }
-
         } while (opcion != 4);
     }
 
@@ -35,8 +34,8 @@ public class GestorEmpleado {
 		double sueldoBase, ventas;
 
         consola.imprimirLinea(" Nuevo Empleado ");
-		tipo = consola.leerEntero("Seleccione un Tipo (1-Técnico, 2-Comercial): ");
 
+		tipo = consola.leerEntero("Seleccione un Tipo: \n 1-Técnico\n 2-Comercial\n ");
 		dni = consola.leerTexto("DNI: ");
 		nombre = consola.leerTexto("Nombre: ");
 		apellidos = consola.leerTexto("Apellidos: ");
@@ -44,11 +43,11 @@ public class GestorEmpleado {
 
         if (tipo == 1) {
 			categoria = consola.leerEntero("Categoría: ");
-            plantilla.agregarEmpleado(new Tecnico(dni, nombre, apellidos, sueldoBase, categoria));
+			plantilla.agregarEmpleado(new Tecnico(dni, nombre, apellidos, sueldoBase, categoria));
 
         } else if (tipo == 2) {
 			ventas = consola.leerImporte("Ventas: ");
-            plantilla.agregarEmpleado(new Comercial(dni, nombre, apellidos, sueldoBase, ventas));
+			plantilla.agregarEmpleado(new Comercial(dni, nombre, apellidos, sueldoBase, ventas));
         }
     }
 
@@ -68,7 +67,6 @@ public class GestorEmpleado {
     private void listarEmpleados(List<Empleado> lista) {
         if (lista.isEmpty()) {
             consola.imprimirLinea("No hay resultados.");
-
         }
 
 		ordenarPorNombre(lista);
@@ -76,7 +74,11 @@ public class GestorEmpleado {
         for (int i = 0; i < lista.size(); i++) {
             Empleado e = lista.get(i);
 
-			consola.imprimirLinea((i + 1) + e.getNombre() + " " + e.getApellidos() + ": " + e.getSueldo());
+			// System.out.printf("%d - %s %s: %.2f €", i + 1, e.getNombre(),
+			// e.getApellidos(),
+			// e.getSueldo());
+			consola.imprimirLinea(
+					(i + 1) + " - " + e.getNombre() + " " + e.getApellidos() + ": " + e.getSueldo() + " €");
 
         }
     }

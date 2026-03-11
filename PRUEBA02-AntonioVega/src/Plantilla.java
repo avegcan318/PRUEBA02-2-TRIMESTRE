@@ -30,7 +30,6 @@ public class Plantilla {
 				filtrados.add(e);
 			}
 		}
-
 		return filtrados;
 	}
 

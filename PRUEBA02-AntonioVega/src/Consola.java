@@ -37,8 +37,14 @@ public class Consola implements IEntradaSalida {
 			try {
 				return Double.parseDouble(sc.nextLine().trim());
 			} catch (NumberFormatException e) {
-				imprimirLinea("Entrada no válida. Debes introducir un número entero.");
+				imprimirLinea("Entrada no válida. Debes introducir un número decimal.");
 			}
+		}
+	}
+
+	public void limpiarPantalla() {
+		for (int i = 0; i < 10; i++) {
+			System.out.println();
 		}
 	}
 
